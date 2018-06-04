@@ -119,7 +119,7 @@ console.log("The value of x is", x, "and the value of y is", y);
 
 // var i = 1, testArray = [];
 // while (i <= 10000) {
-//     testArray[i-1] = i;
+//     testArray[i-1] = Math.ceil(Math.random() * 10000);
 //     i++;
 // };
 
