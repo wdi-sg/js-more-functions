@@ -64,9 +64,13 @@ function primeCount () {
 function primeCountBetter (number) {
 	var check = true;
 
-	for (var i = 2; i < things; i++) {
-		[i]
-	}
+	for (var i = 2; i < number; i++) {
+		if(number%i){
+			check = false;
+		};
+	};
+
+	console.log(check);
 };
 // primeCount();
 
@@ -322,15 +326,134 @@ function bonus () {
 	for (var i = 0; i < testArray.length; i++) {
 		var obj = {};
 
+		//first key
 		obj['number'] = testArray[i];
+		
 
-		if ()
+		//second key
+		function secondKey() {
+			var num = testArray[i].toString();
+			num = num.split('');
+
+			if (num.length == 1) {
+				if(num[num.length-1] == 1) {
+					num = num.join('');
+					return (num + "st");
+				} else if (num[num.length-1] == 2) {
+					num = num.join('');
+					return(num + "nd");
+				} else if (num[num.length-1] == 3) {
+					num = num.join('');
+					return (num + "rd");
+				} else {
+					num = num.join('');
+					return (num + "th");
+				}
+			} else {
+				if (num[num.length-2] == 1) {
+					num = num.join('');
+					return (num + "th");	
+				} else {
+					if(num[num.length-1] == 1) {
+						num = num.join('');
+						return (num + "st");
+					} else if (num[num.length-1] == 2) {
+						num = num.join('');
+						return (num + "nd");
+					} else if (num[num.length-1] == 3) {
+						num = num.join('');
+						return (num + "rd");
+					} else {
+						num = num.join('');
+						return (num + "th");
+					};
+				};
+			};
+		}
+		
+		obj['ordinalForm'] = secondKey();
+
+
+		//third key
+		function primeCounting (number) {
+			var check = true;
+
+			for (var i = 2; i < number; i++) {
+				if(number%i){
+					check = false;
+				};
+			};
+			return check;
+		};
+
+		obj['isPrime'] = primeCounting(testArray[i]);
+
+		arrObj.push(obj);
 	}
 
+	console.log(arrObj);
 }
+
+// bonus();
+
 
 
 // Extension to Exercise 3: Write a function that takes 2 strings and returns true if one string can be formed by rearranging the letters in the other. E.g. isAnagram("meta", "team") should return true, while isAnagram("meat", "meh") should return false.
+function bonusOne () {
+	var string = prompt('please give a string');
+	var stringOne = prompt('please give me another string');
 
+	//to make strings into objects where the keys are the letters and values are the number of times the letters occured
+	function letterCountOne (string) {
+		var foo = {};
 
+		var str = string.split('');
+		for (var i = 0; i < str.length; i++) {
+			if(foo[str[i]] == null) {
+				foo[str[i]] = 1;
+			} else {
+				foo[str[i]] ++;
+			};
+		}
 
+		return foo;
+	}
+
+	//objects for the 2 strings
+	var fooOne = letterCountOne(string);
+	var fooTwo = letterCountOne(stringOne);
+
+	//array of letters from the 2 strings
+	var keysOne = Object.keys(fooOne);
+	var keysTwo = Object.keys(fooTwo);
+
+	var yes = false;
+	var count = 0;
+
+	//if the length are the same, check the letters, otherwise, return false
+	if (keysOne.length == keysTwo.length){
+
+		//checking if the values of any 2 same letters from the 2 objects are the same. if same, count++
+		for (var i = 0; i < keysOne.length; i++) {
+			for (var a = 0; a < keysTwo.length; a++) {
+				if(keysOne[i] == keysTwo[a]){
+					if(fooOne[keysOne[i]] == fooTwo[keysTwo[a]]){
+						count ++;
+					}
+				} 
+			}
+		}
+
+		//if the count = the length of the array, then return true
+		if (count == keysTwo.length) {
+			yes = true;
+		}
+
+	} else {
+		yes = false;
+	}
+
+	return yes;
+}
+
+// console.log(bonusOne());
