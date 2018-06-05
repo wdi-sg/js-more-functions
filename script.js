@@ -12,17 +12,21 @@
 
 function fizzBuzz() {
   for(a = 1; a <= 100; a++) {
-    var = result;
+    var result = "";
 
     if (a % 3 === 0) {
-      result.push("Fizz");
+      result += "Fizz";
     };
 
-    if (b % 5 === 0) {
-      result.push("Buzz");
+    if (a % 5 === 0) {
+      result += "Buzz";
     }
 
-    console.log(result.join(""));
+    if (result === "") {
+      result = a;
+    };
+
+    console.log(result);
   };
 };
 
@@ -33,18 +37,19 @@ function fizzBuzz() {
 
 function primeCounting(userInput) {
   primeNumbers = [2,3,5,7];
+  var prime = true;
 
   if (primeNumbers.indexOf(userInput) > -1) {
     return true;
   };
 
   primeNumbers.forEach(function(number) {
-    if(userInput % number != 0) {
-      return false;
+    if(userInput % number === 0) {
+      return prime = false;
     };
   });
 
-  return true;
+  return prime;
 };
 
 // Exercise 3: Letter Counting
@@ -126,7 +131,7 @@ console.log("The value of x is", x, "and the value of y is", y);
 // Hint: The .indexOf method of an array can find you the index of a given element in an array.
 // *Optional challenge: add an optional 3rd parameter, to be a boolean value, so that when it is true, the array that you return is sorted.
 
-function arrayArithmetic(a1, a2) {
+function union(a1, a2) {
   if (a1.length > a2.length) {
     var longerArray = a1;
     var shorterArray = a2;
