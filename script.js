@@ -9,9 +9,21 @@
 //   If the number is divisible by neither 3 nor 5, print the number.
 // Hint: The % operator gives the remainder when one number is divided by another, e.g. 10 % 7 gives 3.
 // Note: This used to be a common interview question.
+function fizzBuzz () {
+	for (var i = 1; i <= 100; i++) {
+		if (i%3 == 0 && i%5 ==0) {
+			console.log('FizzBuzz');
+		} else if (i%3 == 0) {
+			console.log('Fizz');
+		} else if (i%5 == 0) {
+			console.log('Buzz');
+		} else {
+			console.log(i);
+		};
+	};
+};
 
-
-
+// fizzBuzz();
 
 
 
@@ -23,7 +35,44 @@
 // ==========================
 // Write a function that takes a number and returns true if the number is prime, and false otherwise.
 // Hint: A number is prime when it is only divisble by 1 and itself.
+function primeCount () {
+	var num = 1001;
+	var yes = false;
+	var sum = 0;
 
+	do {
+		num = prompt('think of a number <= 1000');
+	} while (num > 1000);
+
+	for (var i = 0; i < 1000; i++) {
+		if(num%i == 0) {
+			sum ++;
+			console.log(sum);
+		};
+	};
+
+	if(sum>0) {
+		console.log("false");
+		return false;
+	} else {
+		console.log("true");
+		return true;
+	};
+};
+
+
+function primeCountBetter (number) {
+	var check = true;
+
+	for (var i = 2; i < number; i++) {
+		if(number%i){
+			check = false;
+		};
+	};
+
+	console.log(check);
+};
+// primeCount();
 
 
 
@@ -41,7 +90,27 @@
 // l - 1
 // e - 1
 // Hint: Somewhere, you will need to examine each letter in the string, and increase the value of a counter depending on the letter you're currently examining. An object with keys corresponding to the letters of the string would be useful.
+function letterCount () {
+	var string = prompt('please give a string');
+	var foo = {};
 
+	var str = string.split('');
+	for (var i = 0; i < str.length; i++) {
+		if(foo[str[i]] == null) {
+			foo[str[i]] = 1;
+		} else {
+			foo[str[i]] ++;
+		};
+	}
+
+	var keys = Object.keys(foo);
+	var values = Object.values(foo);
+
+	for (var i = 0; i < keys.length; i++) {
+		console.log(keys[i] + " - " + values[i]);
+	}
+};
+// letterCount();
 
 
 
@@ -69,9 +138,20 @@ swap(x, y);
 console.log("The value of x is", x, "and the value of y is", y);
 
 // Explanation:
+// this is because of scope. the function only changed value of a and b not x and y. 
 
 // Write your corrected code below.
+var x = 2, y = 10;
 
+function swap(a, b) {
+    var tmp = a;
+    x = b;
+    y = tmp;
+    console.log("Variables swapped:", x, y);
+}
+
+swap(x, y);
+console.log("The value of x is", x, "and the value of y is", y);
 
 // Exercise 5: Array arithmetic
 // ============================
@@ -79,6 +159,38 @@ console.log("The value of x is", x, "and the value of y is", y);
 // Hint: The .indexOf method of an array can find you the index of a given element in an array.
 // *Optional challenge: add an optional 3rd parameter, to be a boolean value, so that when it is true, the array that you return is sorted.
 
+function E5A (arr1, arr2) {
+	var obj = {};
+
+	for (var i = 0; i < arr1.length; i++) {
+		if(obj[arr1[i]] == null) {
+			obj[arr1[i]] = 1;
+		} else {
+			obj[arr1[i]] ++;
+		};
+	}
+
+	for (var i = 0; i < arr2.length; i++) {
+		if(obj[arr2[i]] == null) {
+			obj[arr2[i]] = 1;
+		} else {
+			obj[arr2[i]] ++;
+		};
+	}
+
+	var keys = Object.keys(obj);
+	keys = keys.sort(function(a,b){return a-b})
+
+	for (var i = 0; i < keys.length; i++) {
+		keys[i] = parseInt(keys[i]);
+	}
+
+	console.log(keys);
+}
+
+array1 = [1,2,3,4];
+array2 = [5,6,3,2,8];
+// E5A(array2, array1);
 
 
 
@@ -91,7 +203,50 @@ console.log("The value of x is", x, "and the value of y is", y);
 
 // 5B. Write a function that takes 2 arrays of numbers and returns an array containing only the unique elements common to both arrays. For example, intersection([1, 2, 3], [2, 3, 4]) should return [2,3].
 // *Optional challenge: Handle the situation where the elements may not be unique, i.e. intersection([1, 2, 2, 2, 3], [2, 2, 3, 4]) should then return [2, 2, 3].
+function E5B (arr1, arr2) {
+	var obj = {};
 
+	for (var i = 0; i < arr1.length; i++) {
+		if(obj[arr1[i]] == null) {
+			obj[arr1[i]] = 1;
+		} else {
+			obj[arr1[i]] ++;
+		};
+	}
+
+	for (var i = 0; i < arr2.length; i++) {
+		if(obj[arr2[i]] == null) {
+			obj[arr2[i]] = 1;
+		} else {
+			obj[arr2[i]] ++;
+		};
+	}
+
+
+	var keys = Object.keys(obj);
+	var vals = Object.values(obj);
+
+	console.log(keys);
+	console.log(vals);
+
+	for (var i = (vals.length -1); i >= 0; i--) {
+		if (vals[i] < 2) {
+			keys.splice(i,1);
+        };
+	};
+
+	keys = keys.sort(function(a,b){return a-b})
+
+	for (var i = 0; i < keys.length; i++) {
+		keys[i] = parseInt(keys[i]);
+	}
+
+	console.log(keys);
+}
+
+array1 = [1,2,3,4];
+array2 = [5,6,3,2,8];
+// E5B(array2, array1);
 
 
 
@@ -103,7 +258,50 @@ console.log("The value of x is", x, "and the value of y is", y);
 
 // 5C. Write a function that takes 2 arrays of numbers and returns an array containing only the unique elements that belong to exactly one array. For example, difference([1, 2, 3], [2, 3, 4]) should return [1, 4].
 // *Optional challenge: Handle the situation where the elements may not be unique, i.e. difference([1, 2, 2, 3], [2, 2, 2, 3, 4]) should return [1, 2, 4].
+function E5C (arr1, arr2) {
+	var obj = {};
 
+	for (var i = 0; i < arr1.length; i++) {
+		if(obj[arr1[i]] == null) {
+			obj[arr1[i]] = 1;
+		} else {
+			obj[arr1[i]] ++;
+		};
+	}
+
+	for (var i = 0; i < arr2.length; i++) {
+		if(obj[arr2[i]] == null) {
+			obj[arr2[i]] = 1;
+		} else {
+			obj[arr2[i]] ++;
+		};
+	}
+
+
+	var keys = Object.keys(obj);
+	var vals = Object.values(obj);
+
+	console.log(keys);
+	console.log(vals);
+
+	for (var i = (vals.length -1); i >= 0; i--) {
+		if (vals[i] > 1) {
+			keys.splice(i,1);
+        };
+	};
+
+	keys = keys.sort(function(a,b){return a-b})
+
+	for (var i = 0; i < keys.length; i++) {
+		keys[i] = parseInt(keys[i]);
+	}
+
+	console.log(keys);
+}
+
+array1 = [1,2,3,4];
+array2 = [5,6,3,2,8];
+// E5C(array2, array1);
 
 
 
@@ -117,14 +315,145 @@ console.log("The value of x is", x, "and the value of y is", y);
 // 2. key: `ordinalForm`, value: the ordinal version of the number itself, e.g. 1st, 2nd, etc
 // 3. key: `isPrime`, value: true if the number is prime, false if it isn't
 
-// var i = 1, testArray = [];
-// while (i <= 10000) {
-//     testArray[i-1] = Math.ceil(Math.random() * 10000);
-//     i++;
-// };
+function bonus () {
+	var i = 1, testArray = [];
+	var arrObj = [];
+	while (i <= 10000) {
+	    testArray[i-1] = Math.ceil(Math.random() * 10000);
+	    i++;
+	};
+
+	for (var i = 0; i < testArray.length; i++) {
+		var obj = {};
+
+		//first key
+		obj['number'] = testArray[i];
+		
+
+		//second key
+		function secondKey() {
+			var num = testArray[i].toString();
+			num = num.split('');
+
+			if (num.length == 1) {
+				if(num[num.length-1] == 1) {
+					num = num.join('');
+					return (num + "st");
+				} else if (num[num.length-1] == 2) {
+					num = num.join('');
+					return(num + "nd");
+				} else if (num[num.length-1] == 3) {
+					num = num.join('');
+					return (num + "rd");
+				} else {
+					num = num.join('');
+					return (num + "th");
+				}
+			} else {
+				if (num[num.length-2] == 1) {
+					num = num.join('');
+					return (num + "th");	
+				} else {
+					if(num[num.length-1] == 1) {
+						num = num.join('');
+						return (num + "st");
+					} else if (num[num.length-1] == 2) {
+						num = num.join('');
+						return (num + "nd");
+					} else if (num[num.length-1] == 3) {
+						num = num.join('');
+						return (num + "rd");
+					} else {
+						num = num.join('');
+						return (num + "th");
+					};
+				};
+			};
+		}
+		
+		obj['ordinalForm'] = secondKey();
+
+
+		//third key
+		function primeCounting (number) {
+			var check = true;
+
+			for (var i = 2; i < number; i++) {
+				if(number%i){
+					check = false;
+				};
+			};
+			return check;
+		};
+
+		obj['isPrime'] = primeCounting(testArray[i]);
+
+		arrObj.push(obj);
+	}
+
+	console.log(arrObj);
+}
+
+// bonus();
+
 
 
 // Extension to Exercise 3: Write a function that takes 2 strings and returns true if one string can be formed by rearranging the letters in the other. E.g. isAnagram("meta", "team") should return true, while isAnagram("meat", "meh") should return false.
+function bonusOne () {
+	var string = prompt('please give a string');
+	var stringOne = prompt('please give me another string');
 
+	//to make strings into objects where the keys are the letters and values are the number of times the letters occured
+	function letterCountOne (string) {
+		var foo = {};
 
+		var str = string.split('');
+		for (var i = 0; i < str.length; i++) {
+			if(foo[str[i]] == null) {
+				foo[str[i]] = 1;
+			} else {
+				foo[str[i]] ++;
+			};
+		}
 
+		return foo;
+	}
+
+	//objects for the 2 strings
+	var fooOne = letterCountOne(string);
+	var fooTwo = letterCountOne(stringOne);
+
+	//array of letters from the 2 strings
+	var keysOne = Object.keys(fooOne);
+	var keysTwo = Object.keys(fooTwo);
+
+	var yes = false;
+	var count = 0;
+
+	//if the length are the same, check the letters, otherwise, return false
+	if (keysOne.length == keysTwo.length){
+
+		//checking if the values of any 2 same letters from the 2 objects are the same. if same, count++
+		for (var i = 0; i < keysOne.length; i++) {
+			for (var a = 0; a < keysTwo.length; a++) {
+				if(keysOne[i] == keysTwo[a]){
+					if(fooOne[keysOne[i]] == fooTwo[keysTwo[a]]){
+						count ++;
+					}
+				} 
+			}
+		}
+
+		//if the count = the length of the array, then return true
+		if (count == keysTwo.length) {
+			yes = true;
+		}
+
+	} else {
+		yes = false;
+	}
+
+	return yes;
+}
+
+// console.log(bonusOne());
