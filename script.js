@@ -106,27 +106,34 @@ console.log("The value of x is", x, "and the value of y is", y);
 // Hint: The .indexOf method of an array can find you the index of a given element in an array.
 // *Optional challenge: add an optional 3rd parameter, to be a boolean value, so that when it is true, the array that you return is sorted.
 
-a = [1, 2, 3];
-b = [2, 3, 4, 5];
+a = [5, 2, 3];
+b = [1, 2, 3, 4, 5];
 
-var union = function (arrayOne, arrayTwo, isTrue) {
+var union = function (arrayOne, arrayTwo, sortOutput) {
   var mergedArrays = arrayOne.concat(arrayTwo);
 
-  for (
+  var outputArray = [];
 
+  for (var i = 0; i < mergedArrays.length; i++) {
+    var valueExists = false;
 
+    for (var y = 0; y < outputArray.length; y++) {
+      if (mergedArrays[i] === outputArray[y]) {
+        valueExists = true;
+        break;
+      }
+    }
+    if (!valueExists) {
+      outputArray.push(mergedArrays[i]);
+    }
+  }
 
-
-
+  if (!sortOutput) {
+    return outputArray;
+  } else {
+    return outputArray.sort();
+  }
 }
-
-
-
-
-
-
-
-
 
 // 5B. Write a function that takes 2 arrays of numbers and returns an array containing only the unique elements common to both arrays. For example, intersection([1, 2, 3], [2, 3, 4]) should return [2,3].
 // *Optional challenge: Handle the situation where the elements may not be unique, i.e. intersection([1, 2, 2, 2, 3], [2, 2, 3, 4]) should then return [2, 2, 3].
