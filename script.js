@@ -1,3 +1,5 @@
+// console.log("hello");
+
 // JS: More Functions, Arrays, and Objects
 // =======================================
 // Exercise 1: Fizzbuzz
@@ -10,28 +12,33 @@
 // Hint: The % operator gives the remainder when one number is divided by another, e.g. 10 % 7 gives 3.
 // Note: This used to be a common interview question.
 
+var max = 100;
 
-
-
-
-
-
-
-
+for (var i = 1; i <= max ; i += 1) {
+if (i % 3 === 0 && i % 5 === 0) {
+   print = "fizzbuzz";
+ } else if (i % 3 === 0) {
+   print = "fizz";
+ } else if (i % 5 === 0) {
+   print = "buzz";
+ } else {
+ print = i;
+ }
+console.log(print);
+}
 
 // Exercise 2: Prime Counting
 // ==========================
 // Write a function that takes a number and returns true if the number is prime, and false otherwise.
 // Hint: A number is prime when it is only divisble by 1 and itself.
 
+function isPrime(num) {
+  for(var i = 2; i < num; i++)
+    if(num % i === 0) return false;
+  return num !== 1;
+}
 
-
-
-
-
-
-
-
+console.log(isPrime(11));
 
 // Exercise 3: Letter Counting
 // ===========================
@@ -42,31 +49,34 @@
 // e - 1
 // Hint: Somewhere, you will need to examine each letter in the string, and increase the value of a counter depending on the letter you're currently examining. An object with keys corresponding to the letters of the string would be useful.
 
+var word = [];
 
+word.push(letter);
 
+var letterCounting = function(letter) {
+    for (i = 0; i < word.length; i++){
+        console.log(word)
+    };
+}
 
-
-
-
-
-
+letterCounting("apple");
 
 // Exercise 4: Debugging
 // =====================
 // The swap function below is supposed to swap the values of two variables given to it. Run the code and explain the result. Write any necessary corrected code below.
 // Note: Compare this to a previous exercise on swapping two elements of an array. If time permits, explain the difference between this swap function and the function you wrote for swapping two elements of an array which worked.
 
-var x = 2, y = 10;
+// var x = 2, y = 10;
 
-function swap(a, b) {
-    var tmp = a;
-    a = b;
-    b = tmp;
-    console.log("Variables swapped:", a, b);
-}
+// function swap(a, b) {
+//     var tmp = a;
+//     a = b;
+//     b = tmp;
+//     console.log("Variables swapped:", a, b);
+// }
 
-swap(x, y);
-console.log("The value of x is", x, "and the value of y is", y);
+// swap(x, y);
+// console.log("The value of x is", x, "and the value of y is", y);
 
 // Explanation:
 
