@@ -10,13 +10,30 @@
 // Hint: The % operator gives the remainder when one number is divided by another, e.g. 10 % 7 gives 3.
 // Note: This used to be a common interview question.
 
+function divisible() {
 
+    for (var i = 1; i <= 100; i++) {
 
+        if (i % 3 === 0 && i % 5 === 0) {
 
+            console.log("FizzBuzz");
 
+        } else if ( i % 3 === 0 ) {
 
+            console.log("Fizz");
 
+        } else if (i % 5 === 0) {
 
+            console.log("Buzz");
+
+        } else {
+
+            console.log(i);
+        }
+    }
+};
+
+//divisible()
 
 
 // Exercise 2: Prime Counting
@@ -24,11 +41,27 @@
 // Write a function that takes a number and returns true if the number is prime, and false otherwise.
 // Hint: A number is prime when it is only divisble by 1 and itself.
 
+function prime(number) {
 
+    var test = [];
 
+    for (var i = 1; i < number; i++) {
 
+        if (number % i === 0 && i !== 1) {
 
+             test.push(false);
 
+        } else {
+
+            test.push(true);
+
+        }
+    }
+
+    return !test.includes(false);
+};
+
+//console.log(prime(11));
 
 
 
@@ -42,9 +75,38 @@
 // e - 1
 // Hint: Somewhere, you will need to examine each letter in the string, and increase the value of a counter depending on the letter you're currently examining. An object with keys corresponding to the letters of the string would be useful.
 
+function letterCounting(word) {
 
+    var wordBreakdown = {};
 
+    // Method 1
+    // for (var i = 0; i < word.length; i++) {
 
+    //     wordBreakdown[word[i]] = 0;
+    // };
+
+    // for (var i = 0; i < word.length; i++) {
+
+    //     wordBreakdown[word[i]] += 1;
+    // }
+
+    //Method 2
+    // for (var i = 0; i < word.length; i++) {
+
+    //     if (wordBreakdown[word[i]] === undefined) {
+
+    //      wordBreakdown[word[i]] = 0;
+
+    //     }
+
+    //     wordBreakdown[word[i]] += 1;
+
+    // }
+
+    return wordBreakdown;
+};
+
+console.log(letterCounting("apple"));
 
 
 
