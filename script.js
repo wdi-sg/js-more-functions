@@ -10,28 +10,38 @@
 // Hint: The % operator gives the remainder when one number is divided by another, e.g. 10 % 7 gives 3.
 // Note: This used to be a common interview question.
 
+var fizzbuzz = function (input) {
 
-
-
-
-
-
-
-
+  for (var i = 1; i <= input; i++) {
+    if (i % 15 === 0) {
+      console.log("FizzBuzz");
+    } else if (i % 5 === 0) {
+      console.log("Buzz");
+    } else if (i % 3 === 0) {
+      console.log("Fizz");
+    } else {
+      console.log(i);
+    }
+  }
+}
 
 // Exercise 2: Prime Counting
 // ==========================
 // Write a function that takes a number and returns true if the number is prime, and false otherwise.
 // Hint: A number is prime when it is only divisble by 1 and itself.
 
+var isPrime = function (input) {
 
-
-
-
-
-
-
-
+  for (var i = 2; i < input; i++) {
+    if (input === 1) {
+      return false;
+    }
+    if (input % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
 
 // Exercise 3: Letter Counting
 // ===========================
@@ -42,35 +52,52 @@
 // e - 1
 // Hint: Somewhere, you will need to examine each letter in the string, and increase the value of a counter depending on the letter you're currently examining. An object with keys corresponding to the letters of the string would be useful.
 
+var letterCount = function (input) {
+  var output = {};
+  split = input.split("");
 
-
-
-
-
-
-
-
+  for (var i = 0; i < split.length; i++) {
+    if (output[split[i]]) {
+      output[split[i]]++;
+    } else {
+      output[split[i]] = 1;
+    }
+  }
+  return output;
+}
 
 // Exercise 4: Debugging
 // =====================
 // The swap function below is supposed to swap the values of two variables given to it. Run the code and explain the result. Write any necessary corrected code below.
 // Note: Compare this to a previous exercise on swapping two elements of an array. If time permits, explain the difference between this swap function and the function you wrote for swapping two elements of an array which worked.
 
+// var x = 2, y = 10;
+
+// function swap(a, b) {
+//     var tmp = a;
+//     a = b;
+//     b = tmp;
+//     console.log("Variables swapped:", a, b);
+// }
+
+// swap(x, y);
+// console.log("The value of x is", x, "and the value of y is", y);
+
+// Explanation:
+// It doesn't work because a & b are local variables within the function.
+
+// Write your corrected code below.
 var x = 2, y = 10;
 
-function swap(a, b) {
-    var tmp = a;
-    a = b;
-    b = tmp;
-    console.log("Variables swapped:", a, b);
+var swap = function (a, b) {
+  x = b;
+  y = a;
+
+  console.log("Variables swapped:", a, b);
 }
 
 swap(x, y);
 console.log("The value of x is", x, "and the value of y is", y);
-
-// Explanation:
-
-// Write your corrected code below.
 
 
 // Exercise 5: Array arithmetic
@@ -79,7 +106,19 @@ console.log("The value of x is", x, "and the value of y is", y);
 // Hint: The .indexOf method of an array can find you the index of a given element in an array.
 // *Optional challenge: add an optional 3rd parameter, to be a boolean value, so that when it is true, the array that you return is sorted.
 
+a = [1, 2, 3];
+b = [2, 3, 4, 5];
 
+var union = function (arrayOne, arrayTwo, isTrue) {
+  var mergedArrays = arrayOne.concat(arrayTwo);
+
+  for (
+
+
+
+
+
+}
 
 
 
@@ -125,6 +164,3 @@ console.log("The value of x is", x, "and the value of y is", y);
 
 
 // Extension to Exercise 3: Write a function that takes 2 strings and returns true if one string can be formed by rearranging the letters in the other. E.g. isAnagram("meta", "team") should return true, while isAnagram("meat", "meh") should return false.
-
-
-
